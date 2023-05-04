@@ -1,3 +1,19 @@
+<script setup>
+	const props = defineProps({
+		title: String,
+	});
+	const emit = defineEmits(["update:title", "search"]);
+
+	const emitTitle = (e) => {
+		if (!e.target.value) return;
+		emit("update:title", e.target.value);
+	};
+
+	const emitSearch = () => {
+		emit("search");
+	};
+</script>
+
 <template>
 	<nav class="nav">
 		<figure class="logo">MovieBase</figure>
@@ -5,13 +21,16 @@
 			<div class="search__categories">
 				<button class="categories__btn">All</button>
 			</div>
-			<input type="text" class="search__input" />
-			<button class="search__btn">Search</button>
+			<input
+				type="text"
+				class="search__input"
+				:value="title"
+				@input.enter="emitTitle"
+			/>
+			<button class="search__btn" @click="emitSearch">Search</button>
 		</div>
 	</nav>
 </template>
-
-<script setup></script>
 
 <style lang="scss" scoped>
 	.nav {

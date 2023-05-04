@@ -1,10 +1,5 @@
 <script setup>
-	import { getTitles } from "../composables/useFetch.js";
-	import { ref, watch } from "vue";
-
-	const { data, error } = getTitles();
-
-	console.log(data);
+	import { ref } from "vue";
 </script>
 <template>
 	<section class="showcase">
@@ -19,7 +14,6 @@
 			</div>
 		</aside>
 	</section>
-	<div class="loading">Loading...</div>
 </template>
 
 <style lang="scss" scoped></style>
